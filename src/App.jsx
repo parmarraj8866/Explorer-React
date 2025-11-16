@@ -1,22 +1,41 @@
-import ServicesClass from "./classComponent/ServicesClass";
-import About from "./Pages/About";
-import Services from "./Pages/Services";
+import React from "react";
+import Card from "./Layout/FunctionComponent";
+import CardClass from "./Layout/ClassComponent";
+import cards from "./Utils/Card";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const App = () => {
+function App() {
   return (
-    <>
-      <section className="mx-4 my-3">
-        <h1>About</h1>
-        <About />
+    <div className="container mt-4">
+      <h1 className="my-5">
+        Card Design using Array + Props (Function & Class Components)
+      </h1>
 
-        <h1>Services</h1>
-        <Services />
+      <h2>Functional Component Cards</h2>
+      <div className="d-flex flex-wrap">
+        {cards.map((item) => (
+          <Card
+            key={item.id}
+            title={item.title}
+            image={item.image}
+            description={item.description}
+          />
+        ))}
+      </div>
 
-        <h1>ServicesClass</h1>
-        <ServicesClass />
-      </section>
-    </>
+      <h2 className="mt-4">Class Component Cards</h2>
+      <div className="d-flex flex-wrap">
+        {cards.map((item) => (
+          <CardClass
+            key={`c${item.id}`}
+            title={item.title}
+            image={item.image}
+            description={item.description}
+          />
+        ))}
+      </div>
+    </div>
   );
-};
+}
 
 export default App;
